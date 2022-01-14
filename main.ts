@@ -118,9 +118,9 @@ input.onButtonPressed(Button.AB, function () {
             Bullet_from_enemy.delete()
             music.playMelody("E G F G A F A G ", 296)
             game.addScore(1)
+            Bullet.delete()
             Player = game.createSprite(2, 4)
             Enemy = game.createSprite(0, 0)
-            Bullet.delete()
         } else if (Bullet.isTouching(Bullet_from_enemy)) {
             Bullet_from_enemy.delete()
             Bullet.delete()
