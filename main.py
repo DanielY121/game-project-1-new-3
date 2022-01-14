@@ -122,9 +122,9 @@ def on_button_pressed_ab():
             Bullet_from_enemy.delete()
             music.play_melody("E G F G A F A G ", 296)
             game.add_score(1)
+            Bullet.delete()
             Player = game.create_sprite(2, 4)
             Enemy = game.create_sprite(0, 0)
-            Bullet.delete()
         elif Bullet.is_touching(Bullet_from_enemy):
             Bullet_from_enemy.delete()
             Bullet.delete()
