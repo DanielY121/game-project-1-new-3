@@ -1,14 +1,9 @@
 input.onGesture(Gesture.TiltLeft, function () {
-    basic.showString("For players")
-    basic.showLeds(`
-        . # # # .
-        . # # # .
-        . # # # .
-        . # # # .
-        . # # # .
-        `)
-    basic.showString("Red pocket ")
-    basic.showString("Happy Chinese New Year.")
+    basic.showIcon(IconNames.Heart)
+    basic.showIcon(IconNames.SmallHeart)
+    basic.showIcon(IconNames.Heart)
+    basic.showString("Happy Valentine’s Day")
+    basic.showString("(but I’m still single)")
 })
 input.onButtonPressed(Button.A, function () {
     Player.change(LedSpriteProperty.X, -1)
