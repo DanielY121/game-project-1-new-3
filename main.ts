@@ -1,14 +1,5 @@
 input.onGesture(Gesture.TiltLeft, function () {
-    basic.showString("For players")
-    basic.showLeds(`
-        . # # # .
-        . # # # .
-        . # # # .
-        . # # # .
-        . # # # .
-        `)
-    basic.showString("Red pocket ")
-    basic.showString("Happy Chinese New Year.")
+    basic.showString("Happy Mardi Gras")
 })
 input.onButtonPressed(Button.A, function () {
     Player.change(LedSpriteProperty.X, -1)
