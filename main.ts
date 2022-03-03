@@ -1,5 +1,9 @@
 input.onGesture(Gesture.TiltLeft, function () {
+    Player.delete()
+    Enemy.delete()
     basic.showString("Happy Mardi Gras")
+    Player = game.createSprite(2, 4)
+    Enemy = game.createSprite(2, 0)
 })
 input.onButtonPressed(Button.A, function () {
     Player.change(LedSpriteProperty.X, -1)
