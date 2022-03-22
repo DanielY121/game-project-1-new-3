@@ -1,3 +1,9 @@
+radio.onReceivedNumber(function (receivedNumber) {
+    game.pause()
+    basic.showNumber(receivedNumber)
+    basic.pause(5000)
+    game.resume()
+})
 input.onGesture(Gesture.TiltLeft, function () {
     Player.change(LedSpriteProperty.X, -1)
     music.playMelody("C5 - - - - - - - ", 500)
@@ -25,6 +31,12 @@ input.onButtonPressed(Button.AB, function () {
     }
     Bullet.delete()
 })
+radio.onReceivedString(function (receivedString) {
+    game.pause()
+    basic.showString(receivedString)
+    basic.pause(5000)
+    game.resume()
+})
 input.onGesture(Gesture.TiltRight, function () {
     Player.change(LedSpriteProperty.X, 1)
     music.playMelody("C5 - - - - - - - ", 500)
@@ -40,6 +52,7 @@ let Player: game.LedSprite = null
 Player = game.createSprite(2, 4)
 music.playMelody("B A G B E C5 E C5 ", 500)
 Enemy = game.createSprite(0, 0)
+radio.setGroup(1)
 loops.everyInterval(60000, function () {
     game.addScore(1)
 })
@@ -128,6 +141,8 @@ basic.forever(function () {
                     basic.showString("Thank you for supporting this game.")
                     basic.showString("Made by DanielY121")
                     basic.pause(250)
+                    radio.sendString("Game over Score:")
+                    radio.sendNumber(game.score())
                     game.gameOver()
                 }
             }
@@ -170,6 +185,8 @@ basic.forever(function () {
                     basic.showString("Thank you for supporting this game.")
                     basic.showString("Made by DanielY121")
                     basic.pause(250)
+                    radio.sendString("Game over Score:")
+                    radio.sendNumber(game.score())
                     game.gameOver()
                 }
             }
