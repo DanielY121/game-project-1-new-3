@@ -1,11 +1,4 @@
 input.onGesture(Gesture.TiltLeft, function () {
-    Player.delete()
-    Enemy.delete()
-    basic.showString("Happy Mardi Gras")
-    Player = game.createSprite(2, 4)
-    Enemy = game.createSprite(2, 0)
-})
-input.onButtonPressed(Button.A, function () {
     Player.change(LedSpriteProperty.X, -1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
@@ -32,7 +25,7 @@ input.onButtonPressed(Button.AB, function () {
     }
     Bullet.delete()
 })
-input.onButtonPressed(Button.B, function () {
+input.onGesture(Gesture.TiltRight, function () {
     Player.change(LedSpriteProperty.X, 1)
     music.playMelody("C5 - - - - - - - ", 500)
 })
@@ -115,7 +108,13 @@ basic.forever(function () {
             Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, 1)
+            if (Enemy.isDeleted()) {
+                Bullet_from_enemy.delete()
+            }
             for (let index = 0; index < 4; index++) {
+                if (Enemy.isDeleted()) {
+                    Bullet_from_enemy.delete()
+                }
                 Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
                 basic.pause(250)
                 if (Bullet_from_enemy.isTouching(Player)) {
@@ -151,7 +150,13 @@ basic.forever(function () {
             Bullet_from_enemy = game.createSprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, -1)
+            if (Enemy.isDeleted()) {
+                Bullet_from_enemy.delete()
+            }
             for (let index = 0; index < 4; index++) {
+                if (Enemy.isDeleted()) {
+                    Bullet_from_enemy.delete()
+                }
                 Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
                 basic.pause(250)
                 if (Bullet_from_enemy.isTouching(Player)) {

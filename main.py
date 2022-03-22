@@ -1,20 +1,7 @@
 def on_gesture_tilt_left():
-    basic.show_string("For players")
-    basic.show_leds("""
-        . # # # .
-                . # # # .
-                . # # # .
-                . # # # .
-                . # # # .
-    """)
-    basic.show_string("Red pocket ")
-    basic.show_string("Happy Chinese New Year.")
-input.on_gesture(Gesture.TILT_LEFT, on_gesture_tilt_left)
-
-def on_button_pressed_a():
     Player.change(LedSpriteProperty.X, -1)
     music.play_melody("C5 - - - - - - - ", 500)
-input.on_button_pressed(Button.A, on_button_pressed_a)
+input.on_gesture(Gesture.TILT_LEFT, on_gesture_tilt_left)
 
 def on_button_pressed_ab():
     global Bullet, Player, Enemy
@@ -39,10 +26,10 @@ def on_button_pressed_ab():
     Bullet.delete()
 input.on_button_pressed(Button.AB, on_button_pressed_ab)
 
-def on_button_pressed_b():
+def on_gesture_tilt_right():
     Player.change(LedSpriteProperty.X, 1)
     music.play_melody("C5 - - - - - - - ", 500)
-input.on_button_pressed(Button.B, on_button_pressed_b)
+input.on_gesture(Gesture.TILT_RIGHT, on_gesture_tilt_right)
 
 Enemy_speed = 0
 sprite = 0
@@ -117,7 +104,11 @@ def on_forever():
             Bullet_from_enemy = game.create_sprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, 1)
+            if Enemy.is_deleted():
+                Bullet_from_enemy.delete()
             for index4 in range(4):
+                if Enemy.is_deleted():
+                    Bullet_from_enemy.delete()
                 Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
                 basic.pause(250)
                 if Bullet_from_enemy.is_touching(Player):
@@ -148,7 +139,11 @@ def on_forever():
             Bullet_from_enemy = game.create_sprite(Enemy.get(LedSpriteProperty.X), 1)
             basic.pause(500)
             Enemy.change(LedSpriteProperty.X, -1)
+            if Enemy.is_deleted():
+                Bullet_from_enemy.delete()
             for index6 in range(4):
+                if Enemy.is_deleted():
+                    Bullet_from_enemy.delete()
                 Bullet_from_enemy.change(LedSpriteProperty.Y, 1)
                 basic.pause(250)
                 if Bullet_from_enemy.is_touching(Player):
