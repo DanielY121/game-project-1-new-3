@@ -142,9 +142,12 @@ basic.forever(function () {
                     basic.showIcon(IconNames.SmallHeart)
                     basic.showString("Thank you for supporting this game.")
                     basic.showString("Made by DanielY121")
-                    basic.pause(250)
-                    radio.sendString("Game over Score:")
-                    radio.sendNumber(game.score())
+                    basic.pause(2500)
+                    if (input.buttonIsPressed(Button.A)) {
+                        radio.sendString("Game over Score:")
+                        radio.sendNumber(game.score())
+                    }
+                    basic.pause(2500)
                     game.gameOver()
                 }
             }
@@ -186,9 +189,12 @@ basic.forever(function () {
                     basic.showIcon(IconNames.SmallHeart)
                     basic.showString("Thank you for supporting this game.")
                     basic.showString("Made by DanielY121")
-                    basic.pause(250)
-                    radio.sendString("Game over Score:")
-                    radio.sendNumber(game.score())
+                    basic.pause(2500)
+                    if (input.buttonIsPressed(Button.A)) {
+                        radio.sendString("Game over Score:")
+                        radio.sendNumber(game.score())
+                    }
+                    basic.pause(2500)
                     game.gameOver()
                 }
             }
