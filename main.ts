@@ -1,5 +1,6 @@
 radio.onReceivedNumber(function (receivedNumber) {
     game.pause()
+    music.playMelody("A B C5 A B C5 A B ", 1200)
     basic.showNumber(receivedNumber)
     basic.pause(5000)
     game.resume()
@@ -33,6 +34,7 @@ input.onButtonPressed(Button.AB, function () {
 })
 radio.onReceivedString(function (receivedString) {
     game.pause()
+    music.playMelody("A F G F A F G F ", 1000)
     basic.showString(receivedString)
     basic.pause(5000)
     game.resume()
